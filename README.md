@@ -1,98 +1,98 @@
-🎉 UIT EVENT - Phần mềm Quản lý Sự kiện
-📌 Giới thiệu
+# 🎉 UIT EVENT – Phần mềm Quản lý Sự kiện
 
-UIT EVENT là phần mềm quản lý sự kiện được phát triển bởi Nhóm 5 - lớp IT008.P11, Trường Đại học Công nghệ Thông tin (UIT).
-Ứng dụng hỗ trợ sinh viên và giảng viên dễ dàng theo dõi, đăng ký và quản lý các sự kiện trong toàn trường.
+> Ứng dụng hỗ trợ quản lý và tập trung hóa thông tin sự kiện trong trường Đại học Công nghệ Thông tin – ĐHQG TP.HCM.  
+> Giúp sinh viên dễ dàng theo dõi, đăng ký và tham gia các sự kiện từ nhiều khoa trong trường.
 
-Thay vì phải theo dõi nhiều fanpage riêng lẻ, UIT EVENT tập hợp tất cả sự kiện của các khoa vào một nền tảng duy nhất, giúp tăng hiệu quả truyền thông, cải thiện tỷ lệ tham gia sự kiện và nâng cao trải nghiệm người dùng.
+---
 
-🚀 Tính năng chính
+## 📌 Giới thiệu
 
-👥 Phân quyền người dùng: Admin, Dean (trưởng khoa), User (sinh viên).
+Hiện nay, các khoa trong trường UIT thường đăng tải sự kiện qua fanpage riêng, nhưng sinh viên ít quan tâm nên thông tin dễ bị bỏ lỡ.  
+**UIT EVENT** ra đời để giải quyết vấn đề này bằng cách:
 
-📢 Quản lý sự kiện: Tạo, duyệt, chỉnh sửa, xoá sự kiện.
+- Tập trung tất cả sự kiện của các khoa vào **một ứng dụng duy nhất**.  
+- Cho phép sinh viên dễ dàng đăng ký, theo dõi và nhận nhắc nhở sự kiện.  
+- Hỗ trợ các khoa và admin quản lý sự kiện hiệu quả, nhanh chóng.  
 
-📝 Đăng ký sự kiện: Sinh viên có thể đăng ký tham gia nhanh chóng.
+---
 
-📊 Quản lý người tham gia: Theo dõi danh sách và xác nhận sinh viên tham gia.
+## 🚀 Tính năng chính
 
-🔔 Thông báo & nhắc nhở: Hỗ trợ sinh viên không bỏ lỡ sự kiện.
+- 👥 **Phân quyền người dùng**: Admin, Dean (khoa), User (sinh viên).  
+- 📅 **Quản lý sự kiện**: Tạo, sửa, xóa, phê duyệt sự kiện.  
+- 🔔 **Đăng ký sự kiện**: Sinh viên đăng ký, theo dõi và nhận thông báo nhắc nhở.  
+- 📊 **Thống kê & báo cáo**: Quản lý danh sách người tham gia, thống kê hiệu quả.  
+- 👤 **Quản lý người dùng**: Thêm, chỉnh sửa, phân quyền.  
 
-📅 Lịch sự kiện: Đồng bộ hoá sự kiện trực quan bằng Calendar.
+---
 
-🛠️ Công nghệ sử dụng
+## 🛠 Công nghệ sử dụng
 
-Ngôn ngữ lập trình: C#, SQL, XAML
+- **Ngôn ngữ**: `C#`, `SQL`, `XAML`  
+- **Framework**: `WPF`, `Entity Framework`, `Material Design Library`  
+- **CSDL**: `SQL Server`  
+- **Môi trường phát triển**: `Visual Studio`, `SQL Server Management Studio`  
+- **Thiết kế giao diện**: `Figma`, `Draw.io`  
+- **Quản lý mã nguồn**: `GitHub`  
 
-Framework: WPF, Entity Framework, Material Design Library
+---
 
-Cơ sở dữ liệu: SQL Server
+## 🏗 Kiến trúc hệ thống
 
-Môi trường phát triển: Microsoft Visual Studio, SQL Server Management Studio
+- Áp dụng mô hình **MVVM** (Model – View – ViewModel).  
+- Hệ thống được chia thành 3 lớp chính:
+  - **Frontend (UI)**: Giao diện WPF, trực quan và thân thiện.  
+  - **Backend (Logic)**: Xử lý luồng nghiệp vụ, phân quyền và quản lý sự kiện.  
+  - **Database**: SQL Server lưu trữ thông tin người dùng, sự kiện, khoa, đăng ký.  
 
-Công cụ hỗ trợ: Figma, Draw.io
+---
 
-Quản lý mã nguồn: GitHub
+## 📊 Mô hình CSDL (ERD)
 
-📂 Kiến trúc hệ thống
+- **NGUOIDUNG** (User)  
+- **SUKIEN** (Event)  
+- **KHOA** (Faculty)  
+- **DANGKYSUKIEN** (Event Registration)  
 
-Mô hình MVVM (Model - View - ViewModel)
+Quan hệ chính:  
+- 1 khoa – nhiều người dùng.  
+- 1 người dùng – nhiều sự kiện (thông qua bảng đăng ký).  
+- 1 sự kiện – nhiều người đăng ký.  
 
-Database quan hệ (SQL Server) với các bảng chính:
+---
 
-NGUOIDUNG (Người dùng)
+## 🔄 Luồng xử lý
 
-SUKIEN (Sự kiện)
+1. Người dùng đăng ký tài khoản → đăng nhập.  
+2. Admin phân quyền (User → Dean).  
+3. Dean tạo sự kiện → Admin phê duyệt.  
+4. Sinh viên đăng ký tham gia sự kiện.  
+5. Dean xác nhận sinh viên tham gia.  
+6. Sinh viên nhận thông báo & tham gia sự kiện.  
 
-KHOA (Khoa)
+---
 
-DANGKYSUKIEN (Đăng ký sự kiện)
+## 📈 Phân tích SWOT
 
-🖼️ Giao diện chính
+- **Điểm mạnh**: Giao diện trực quan, tập trung thông tin sự kiện.  
+- **Điểm yếu**: Khả năng mở rộng còn hạn chế.  
+- **Cơ hội**: Đáp ứng nhu cầu kết nối thông tin trong toàn trường.  
+- **Thách thức**: Bảo mật dữ liệu người dùng.  
 
-🔑 Đăng nhập / Đăng ký
+---
 
-🏠 Trang chủ & Lịch sự kiện
+## ⭐ Kết luận
 
-👤 Quản lý người dùng (Admin)
+Dự án **UIT EVENT** đã đạt được:  
+- Giải quyết hiệu quả bài toán quản lý sự kiện trong toàn trường.  
+- Giao diện thân thiện, hỗ trợ đa dạng nghiệp vụ.  
+- Tăng cường kết nối giữa sinh viên và khoa.  
 
-🏫 Quản lý sự kiện (Dean)
+👉 Hướng phát triển: Mở rộng quy mô, tích hợp mobile app và tính năng nhắc lịch thông minh.  
 
-🎫 Đăng ký & tham gia sự kiện (User)
+---
 
-📌 Hình ảnh giao diện demo có thể được chèn thêm trong thư mục /screenshots.
+Dự án này mình clone lại từ tài khoản github thứ 2 của mình là: https://github.com/Khanginyoureyes
 
-📊 Phân tích & Đánh giá
-
-✅ Điểm mạnh: Giao diện trực quan, dễ sử dụng, tập trung hóa thông tin.
-
-⚠️ Điểm yếu: Chưa tối ưu khi số lượng người dùng tăng đột biến.
-
-🌟 Cơ hội: Ứng dụng thực tiễn, có thể mở rộng quy mô toàn trường.
-
-🔒 Thách thức: Bảo mật thông tin người dùng.
-
-👨‍💻 Nhóm phát triển - Nhóm 5
-MSSV	Họ và tên	Vai trò
-23520699	Nguyễn Tiến Khang	Nhóm trưởng
-23520871	Nguyễn Ngọc Lợi	Thành viên
-23520683	Dương Trọng Khang	Thành viên
-23521484	Nguyễn Minh Thiện	Thành viên
-23520922	Hà Nhật Minh	Thành viên
-📥 Cài đặt & Sử dụng
-
-Clone repository:
-
-git clone https://github.com/<your-username>/uit-event.git
-
-
-Mở project bằng Visual Studio.
-
-Cấu hình SQL Server và khởi tạo database.
-
-Chạy ứng dụng và đăng nhập với tài khoản demo hoặc tạo tài khoản mới.
-
-📝 Giấy phép
-
-Dự án này được phát triển cho mục đích học tập trong môn Lập trình Trực quan - UIT.
-Mọi đóng góp và cải tiến đều được chào đón! 🎉
+---
+✨ Nếu bạn thấy dự án hữu ích, hãy **Star ⭐ repository** để ủng hộ nhóm nhé!
