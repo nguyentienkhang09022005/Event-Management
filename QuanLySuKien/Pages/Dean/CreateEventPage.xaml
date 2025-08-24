@@ -1,0 +1,247 @@
+﻿<Page x:Class="Demo1.Pages.Dean.CreateEventPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      FontFamily="{DynamicResource MaterialDesignFont}"
+      Title="CreateEventPage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid Margin="10">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="TẠO SỰ KIỆN" Foreground="{StaticResource TitlePrimaryColor}" FontSize="35" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+            <!-- Form Fields -->
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Event Name -->
+                <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Orientation="Vertical" Margin="225,10,225,10">
+                    <TextBlock Text="Tên sự kiện" FontSize="14" FontWeight="Bold" TextAlignment="Left"/>
+                    <TextBox x:Name="EventNameTextBox" HorizontalAlignment="Stretch" Style="{StaticResource MaterialDesignTextBoxBase}"
+                             materialDesign:HintAssist.Hint="Nhập tên sự kiện ..."
+                             materialDesign:HintAssist.FloatingOffset="0 -20"
+                             BorderBrush="#c5c8ff"
+                             BorderThickness="0 0 0 1.5"/>
+                </StackPanel>
+
+                <!-- Location -->
+                <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Orientation="Vertical" Margin="225,10,225,10">
+                    <TextBlock Text="Địa điểm tổ chức" FontSize="14" FontWeight="Bold" TextAlignment="Left"/>
+                    <TextBox x:Name="LocationTextBox" HorizontalAlignment="Stretch" Style="{StaticResource MaterialDesignTextBoxBase}"
+                             materialDesign:HintAssist.Hint="Nhập địa điểm tổ chức ..."
+                             materialDesign:HintAssist.FloatingOffset="0 -20"
+                             BorderBrush="#c5c8ff"
+                             BorderThickness="0 0 0 1.5"/>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" Orientation="Vertical" Margin="225,10,25,10">
+                <TextBlock Text="Khoa" FontSize="14" FontWeight="Bold" TextAlignment="Left" />
+                <ComboBox x:Name="KhoaCombobox" Style="{StaticResource MaterialDesignComboBox}" HorizontalAlignment="Stretch" Margin="0,0,0,0" materialDesign:HintAssist.Hint="Khoa">
+                        <ComboBoxItem Content="Công Nghệ Phần Mềm" />
+                        <ComboBoxItem Content="Hệ Thống Thông Tin" />
+                        <ComboBoxItem Content="Khoa Học Máy Tính" />
+                        <ComboBoxItem Content="Kỹ Thuật Máy Tính" />
+                        <ComboBoxItem Content="Mạng Máy Tính Và Truyền Thông" />
+                        <ComboBoxItem Content="Khoa Học Và Kỹ Thuật Thông Tin" />
+                    </ComboBox>
+                </StackPanel>
+                <!--number of participants & kind-->
+                <StackPanel Grid.Row="3" Grid.Column="0" HorizontalAlignment="Stretch" Orientation="Vertical" Margin="225,10,25,10">
+                    <TextBlock Text="Số người tham gia" FontSize="14" FontWeight="Bold" TextAlignment="Left" />
+                    <ComboBox x:Name="ParticipantsComboBox" 
+                              Style="{StaticResource MaterialDesignComboBox}" 
+                              HorizontalAlignment="Stretch" 
+                              Margin="0,0,0,0" 
+                              IsEditable="True" 
+                              materialDesign:HintAssist.Hint="Số lượng" 
+                              ItemsSource="{Binding EventQuantities}">
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" Orientation="Vertical" Margin="25,10,225,10">
+                    <TextBlock Text="Thể loại" FontSize="14" FontWeight="Bold" TextAlignment="Left" />
+                    <ComboBox x:Name="CategoryComboBox" Style="{StaticResource MaterialDesignComboBox}" HorizontalAlignment="Stretch" Margin="0,0,0,0" materialDesign:HintAssist.Hint="Thể loại">
+                        <ComboBoxItem Content="Học thuật" />
+                        <ComboBoxItem Content="Thể thao" />
+                        <ComboBoxItem Content="Tình nguyện" />
+                        <ComboBoxItem Content="Giải trí" />
+                        <ComboBoxItem Content="Hoạt động xã hội" />
+                        <ComboBoxItem Content="Kỹ năng mềm" />
+                        <ComboBoxItem Content="Âm nhạc và Biểu diễn" />
+                        <ComboBoxItem Content="Hội chợ và Triển lãm" />
+                        <ComboBoxItem Content="Hội thảo và Hội nghị" />
+                        </ComboBox>
+                </StackPanel>
+                <!-- Registration Open Date & Close Date (Side by Side) -->
+                <StackPanel Grid.Row="4" Grid.Column="0" HorizontalAlignment="Stretch" Orientation="Vertical" Margin="225,10,25,10">
+                    <TextBlock Text="Ngày mở đăng ký" FontSize="14" FontWeight="Bold" TextAlignment="Left" />
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <!-- Cột 1 chiếm 50% -->
+                            <ColumnDefinition Width="0.5*"/>
+                            <!-- Cột 2 chiếm 50% -->
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!-- TimePicker ở cột 1 -->
+                        <materialDesign:TimePicker x:Name="RegistrationOpenTime" Grid.Column="0"/>
+                        <!-- DatePicker ở cột 2 -->
+                        <DatePicker x:Name="RegistrationOpenDate" Grid.Column="1" Margin="10 0 0 0" />
+                    </Grid>
+                </StackPanel>
+                <StackPanel Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" Orientation="Vertical" Margin="25,10,225,10">
+                    <TextBlock Text="Ngày kết thúc đăng ký" FontSize="14" FontWeight="Bold" TextAlignment="Left" />
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:TimePicker x:Name="RegistrationCloseTime" Grid.Column="0"/>
+                        <DatePicker x:Name="RegistrationCloseDate" Grid.Column="1" Margin="10 0 0 0" />
+                    </Grid>
+                </StackPanel>
+
+                <!-- Event Start Time & End Time (Side by Side) -->
+                <StackPanel Grid.Row="5" Grid.Column="0" HorizontalAlignment="Stretch" Orientation="Vertical" Margin="225,10,25,10">
+                    <TextBlock Text="Thời gian bắt đầu sự kiện" FontSize="14" FontWeight="Bold" TextAlignment="Left" />
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:TimePicker x:Name="EventStartTime" Grid.Column="0"/>
+                        <DatePicker x:Name="EventStartDate" Grid.Column="1" Margin="10 0 0 0" />
+                    </Grid>
+                </StackPanel>
+                <StackPanel Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" Orientation="Vertical" Margin="25,10,225,10">
+                    <TextBlock Text="Thời gian kết thúc sự kiện" FontSize="14" FontWeight="Bold" TextAlignment="Left" />
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:TimePicker x:Name="EventEndTime" Grid.Column="0"/>
+                        <DatePicker x:Name="EventEndDate" Grid.Column="1" Margin="10 0 0 0" />
+                    </Grid>
+                </StackPanel>
+
+                <!-- Sponsor Name -->
+                <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Orientation="Vertical" Margin="225,10,225,10">
+                    <TextBlock Text="Tên nhà tài trợ" FontSize="14" FontWeight="Bold" TextAlignment="Left"/>
+                    <TextBox x:Name="SponsorNameTextBox" HorizontalAlignment="Stretch" Style="{StaticResource MaterialDesignTextBoxBase}"
+                             materialDesign:HintAssist.Hint="Nhập tên nhà tài trợ ..."
+                             materialDesign:HintAssist.FloatingOffset="0 -20"
+                             BorderBrush="#c5c8ff"
+                             BorderThickness="0 0 0 1.5"/>
+                </StackPanel>
+
+                <!-- Reward -->
+                <StackPanel Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Orientation="Vertical" Margin="225,10,225,10">
+                    <TextBlock Text="Phần thưởng" FontSize="14" FontWeight="Bold" TextAlignment="Left"/>
+                    <TextBox x:Name="RewardTextBox" HorizontalAlignment="Stretch" Style="{StaticResource MaterialDesignTextBoxBase}"
+                             materialDesign:HintAssist.Hint="Nhập phần thưởng ..."
+                             materialDesign:HintAssist.FloatingOffset="0 -20"
+                             BorderBrush="#c5c8ff"
+                             BorderThickness="0 0 0 1.5" />
+                </StackPanel>
+                <!--image-->
+                <StackPanel Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Orientation="Vertical" Margin="225,10,225,10" Width="Auto">
+                    <TextBlock Text="Ảnh đại diện" FontSize="14" FontWeight="Bold" TextAlignment="Left" />
+                    <Button Content="Chọn ảnh" Click="UploadAvatarButton_Click" HorizontalAlignment="Left" Margin="0,5,0,0" />
+                    <Image x:Name="AvatarPreview" Stretch="Fill" Margin="0,10,0,0" HorizontalAlignment="Left" />
+                </StackPanel>
+
+            </Grid>
+
+            <!-- Formatting Buttons -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10" Grid.Row="2" HorizontalAlignment="Stretch">
+                <Button Content="B" Foreground="Black" BorderThickness="1" FontWeight="Bold" Click="BoldButton_Click" Width="30" Style="{StaticResource MaterialDesignFlatButton}" Padding="5" />
+                <Button Content="I" Foreground="Black" BorderThickness="1" FontStyle="Italic" Click="ItalicButton_Click" Width="30" Style="{StaticResource MaterialDesignFlatButton}" Padding="5"/>
+                <Button Content="U" Foreground="Black" BorderThickness="1" Click="UnderlineButton_Click" Width="30" Style="{StaticResource MaterialDesignFlatButton}" Padding="5"/>
+                <Button Content="🖌️" Foreground="Black" BorderThickness="1" Width="30" Click="OpenColorPicker_Click" ToolTip="Chọn màu chữ" Style="{StaticResource MaterialDesignFlatButton}" Padding="5"/>
+                <xctk:ColorPicker x:Name="FontColorPicker" Width="200" SelectedColorChanged="FontColorPicker_SelectedColorChanged"
+                          Visibility="Collapsed" Margin="10,0,0,0"/>
+                <!-- Nút căn lề trái -->
+                <Button Width="30" Height="30" Style="{StaticResource MaterialDesignFlatButton}" Padding="5" Click="AlignLeftButton_Click">
+                    <materialDesign:PackIcon Kind="FormatAlignLeft" Foreground="Black" />
+                </Button>
+
+                <!-- Nút căn lề giữa -->
+                <Button Width="30" Height="30" Style="{StaticResource MaterialDesignFlatButton}" Padding="5" Click="AlignCenterButton_Click">
+                    <materialDesign:PackIcon Kind="FormatAlignCenter" Foreground="Black" />
+                </Button>
+
+                <!-- Nút căn lề phải -->
+                <Button Width="30" Height="30" Style="{StaticResource MaterialDesignFlatButton}" Padding="5" Click="AlignRightButton_Click">
+                    <materialDesign:PackIcon Kind="FormatAlignRight" Foreground="Black" />
+                </Button>
+                <ComboBox x:Name="ThemeFontComboBox" Width="120" IsEditable="True" 
+                          PreviewTextInput="ThemeFontComboBox_PreviewTextInput" 
+                          SelectionChanged="ThemeFontComboBox_SelectionChanged" Margin="10,0,0,0">
+                    <ComboBoxItem Content="Arial" />
+                    <ComboBoxItem Content="Calibri" />
+                    <ComboBoxItem Content="Times New Roman" />
+                    <ComboBoxItem Content="Verdana" />
+                    <ComboBoxItem Content="Segoe UI" />
+                </ComboBox>
+                <ComboBox x:Name="FontSizeComboBox" Width="60" IsEditable="True" 
+                          SelectionChanged="FontSizeComboBox_SelectionChanged" Margin="10,0,0,0">
+                    <ComboBoxItem Content="12" />
+                    <ComboBoxItem Content="14" />
+                    <ComboBoxItem Content="16" />
+                    <ComboBoxItem Content="18" />
+                    <ComboBoxItem Content="20" />
+                    <ComboBoxItem Content="24" />
+                    <ComboBoxItem Content="28" />
+                    <ComboBoxItem Content="32" />
+                </ComboBox>
+            </StackPanel>
+            <!-- Article Content Entry -->
+            <TextBlock Text="Nội dung bài viết:" FontSize="16" Margin="0,10,0,5" Grid.Row="3"/>
+            <RichTextBox x:Name="ContentRichTextBox" Width="Auto" Height="200" Grid.Row="4" Margin="0,0,0,20" HorizontalAlignment="Stretch"/>
+
+            <!-- Save Button -->
+            <Button Content="Lưu Bài Viết" Width="120" Click="SaveButton_Click" HorizontalAlignment="Center" Grid.Row="5" Margin="0,10,0,0"/>
+        </Grid>
+    </ScrollViewer>
+    </Grid>
+</Page>

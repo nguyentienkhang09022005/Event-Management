@@ -1,0 +1,70 @@
+﻿<Window x:Class="Demo1.Pages.Dean.ParticipantList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Demo1.Pages.Dean"
+        mc:Ignorable="d"
+        Title="ParticipantList" Height="450" Width="900"
+        WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Background="White" 
+        ResizeMode="NoResize" WindowState="Normal">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,10,0" Height="30" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Button x:Name="btnClose" Style="{StaticResource IconButtonsStyle}" Content="{DynamicResource close}" Click="btnClose_Click" Tag="IsCloseButton"/>
+            <Button x:Name="btnMinimize" Style="{DynamicResource IconButtonsStyle}" Content="{DynamicResource minimize}" Click="btnMinimize_Click"/>
+        </StackPanel>
+        <TextBlock Grid.Row="1" Text="DANH SÁCH NGƯỜI THAM GIA" HorizontalAlignment="Center" Foreground="{StaticResource TitlePrimaryColor}" FontSize="20" FontWeight="Bold" Margin="10"/>
+        <TextBlock Grid.Row="2" Text="{Binding ElementName=CurrentDataGrid, Path=Items.Count, StringFormat='Tổng số người tham gia: {0}'}"
+           HorizontalAlignment="Left" 
+           Foreground="{StaticResource TitlePrimaryColor}" 
+           FontSize="16" 
+           FontWeight="SemiBold" 
+           Margin="10"/>
+        <DataGrid x:Name="CurrentDataGrid"
+                AutoGenerateColumns="False" 
+                Style="{DynamicResource DataGridStyle1}"
+                CellStyle="{DynamicResource DataGridCellStyle1}"
+                ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+                RowStyle="{DynamicResource DataGridRowStyle1}"
+                Grid.Row="3">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="HỌ VÀ TÊN" IsReadOnly="True" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Name}" Foreground="{StaticResource TextPrimaryColor}" FontWeight="SemiBold"  VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="SỐ ĐIỆN THOẠI" Foreground="{StaticResource TextPrimaryColor}" FontWeight="SemiBold" IsReadOnly="True" Width="*" Binding="{Binding PhoneNumber}"/>
+                <DataGridTextColumn Header="EMAIL" Foreground="{StaticResource TextPrimaryColor}" FontWeight="SemiBold" IsReadOnly="True" Width="*" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="KHOA" Foreground="{StaticResource TextPrimaryColor}" FontWeight="SemiBold" IsReadOnly="True" Width="*" Binding="{Binding Khoa}"/>
+                <DataGridTemplateColumn Header="ĐÃ THAM GIA" IsReadOnly="True" Width="0.9*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox x:Name="cbParticipant" IsChecked="{Binding Check}" Background="Transparent" HorizontalAlignment="Center"  VerticalAlignment="Center" Click="cbParticipant_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="CHỈNH SỬA" IsReadOnly="True" Width="0.9*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Style="{DynamicResource InfoButtonStyle}" Content="{DynamicResource infoIcon}" Margin="0,0,2,0" Click="btninfo_Click"/>
+                                <Button Style="{DynamicResource InfoButtonStyle}" Content="{DynamicResource deleteIcon}" Click="btndelete_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

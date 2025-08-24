@@ -1,0 +1,191 @@
+﻿<Page x:Class="Demo1.Pages.General.PersonalProfilePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Demo1.Pages.General"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d"
+      d:DesignHeight="720" d:DesignWidth="1080"
+      Title="PersonalProfilePage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width ="0.25*"/>
+                <ColumnDefinition Width ="2*"/>
+                <ColumnDefinition Width ="0.25*"/>
+            </Grid.ColumnDefinitions>
+            <Border Background="WhiteSmoke" Grid.Row="1" Grid.Column="1" CornerRadius="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Thông tin cá nhân" Foreground="#6A0DAD" FontSize="27" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+                    <!-- Thông tin-->
+                    <StackPanel Grid.Row="1"  Margin="50 0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <Canvas Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Ellipse Name="ImageEllipse" Width="175" Height="175" Fill="{Binding Avatar}" Canvas.Left="-110" Canvas.Top="-100"/>
+                            </Canvas>
+                            <Button Name="txtAvtChange" Width="125" Height="30" Content="Đổi ảnh đại diện" FontSize="11"  Background="#6A0DAD" Foreground="#FFFFFF"
+                                    FontWeight="SemiBold" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 10 50 0" Style="{StaticResource MaterialDesignFlatLightBgButton}" Click="txtAvtChange_Click"/>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBox x:Name="txtName" Grid.Row="0" Grid.Column="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="Họ và tên"
+                                     materialDesign:HintAssist.FloatingOffset="0 -20"
+                                     BorderBrush="#c5c8ff"
+                                     BorderThickness="0 0 0 1.5"
+                                     Margin="0 15 15 0"
+                                     IsReadOnly="True"
+                                     Text="{Binding Name}"/>
+                                <Grid Grid.Row="1" Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox x:Name="txtMSSV" Grid.Column="0" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="MSSV/MSGV"
+                                         materialDesign:HintAssist.FloatingOffset="0 -20"
+                                         BorderBrush="#c5c8ff"
+                                         Margin="0 15 15 15"
+                                         BorderThickness="0 0 0 1.5"
+                                         IsReadOnly="True"
+                                         Text ="{Binding MSSV}"/>
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBlock Text="Giới Tính: " Style="{StaticResource MaterialDesignButtonTextBlock}"  VerticalAlignment="Center" FontSize="17"/>
+                                        <RadioButton x:Name="RadioBtnNam" GroupName="Gender" VerticalAlignment="Center" FontWeight="DemiBold"  Content="Nam" FontSize="17" Margin="0,0,0,0" PreviewMouseDown="RadioButton_PreviewMouseDown">
+                                            <RadioButton.Resources>
+                                                <Style TargetType="Ellipse">
+                                                    <Setter Property="Width" Value="20"/>
+                                                    <Setter Property="Height" Value="20"/>
+                                                    <Setter Property="Stroke" Value="Black"/>
+                                                    <Setter Property="StrokeThickness" Value="2"/>
+                                                </Style>
+                                            </RadioButton.Resources>
+                                        </RadioButton>
+                                        <RadioButton GroupName="Gender" Name="RadioBtnNu" VerticalAlignment="Center" FontWeight="DemiBold" Content="Nữ" FontSize="17" Margin="15 0 0 0" PreviewMouseDown="RadioButton_PreviewMouseDown">
+                                            <RadioButton.Resources>
+                                                <Style TargetType="Ellipse">
+                                                    <Setter Property="Width" Value="20"/>
+                                                    <Setter Property="Height" Value="20"/>
+                                                    <Setter Property="Stroke" Value="Black"/>
+                                                    <Setter Property="StrokeThickness" Value="2"/>
+                                                </Style>
+                                            </RadioButton.Resources>
+                                        </RadioButton>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Grid.Row="2" Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <ComboBox x:Name="txtKhoa" Grid.Column="0" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                          Text ="{Binding Khoa}"
+                                          materialDesign:HintAssist.Hint="Khoa"
+                                          materialDesign:HintAssist.FloatingOffset="0 -20"
+                                          BorderBrush="#c5c8ff"
+                                          Margin="0 15 15 15"
+                                          BorderThickness="0 0 0 1.5"
+                                          IsEnabled="False">
+                                         <ComboBoxItem Content="Công Nghệ Phần Mềm" />
+                                         <ComboBoxItem Content="Hệ Thống Thông Tin" />
+                                         <ComboBoxItem Content="Khoa Học Máy Tính" />
+                                         <ComboBoxItem Content="Kỹ Thuật Máy Tính" />
+                                         <ComboBoxItem Content="Mạng Máy Tính Và Truyền Thông" />
+                                         <ComboBoxItem Content="Khoa Học Và Kỹ Thuật Thông Tin" />
+                                    </ComboBox>
+                                    <ComboBox x:Name="txtRole" Grid.Column="1" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                          Text ="{Binding Role}"
+                                          materialDesign:HintAssist.Hint="Vai Trò"
+                                          materialDesign:HintAssist.FloatingOffset="0 -20"
+                                          BorderBrush="#c5c8ff"
+                                          Margin="0 15 15 15"
+                                          BorderThickness="0 0 0 1.5"
+                                          IsEnabled="False">
+                                        <ComboBoxItem Content="Sinh Viên" />
+                                        <ComboBoxItem Content="Nguời Đăng Bài" />
+                                        <ComboBoxItem Content="Admin" />
+                                    </ComboBox>
+                                </Grid>
+                                <TextBox x:Name="txtSDT" Grid.Row="3" Grid.Column="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     Text ="{Binding SDT}"
+                                     materialDesign:HintAssist.Hint="Số điện thoại"
+                                     materialDesign:HintAssist.FloatingOffset="0 -20"
+                                     BorderBrush="#c5c8ff"
+                                     Margin="0 15 15 15"
+                                     BorderThickness="0 0 0 1.5"
+                                     IsReadOnly="True"/>
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+                    <Grid Grid.Row="2" Margin="0 20">
+                        <Button x:Name="btnChinhsua" Width="150" Background="#6A0DAD" Foreground="#FFFFFF" Grid.Row="7" Grid.Column="1" Content="Chỉnh sửa" Cursor="Hand" Click="btn_Edit" Style="{StaticResource MaterialDesignFlatLightBgButton}"/>
+                        <Button x:Name="btnXacnhan"  Width="150" Background="#6A0DAD" Foreground="#FFFFFF" Grid.Row="7" Grid.Column="1" Content="Xác nhận" Cursor="Hand" Click="btn_Xacnhan" Style="{StaticResource MaterialDesignFlatLightBgButton}" VerticalAlignment="Top" Visibility="Collapsed"/>
+                    </Grid>
+                </Grid>
+            </Border>
+            <Border Grid.Row="2" Grid.Column="1" Margin="0 20" Background="WhiteSmoke" CornerRadius="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.25*"/>
+                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition Height="0.25*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="Thông tin tài khoản" Foreground="#6A0DAD" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="txtEmail" Grid.Column="0" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 Text ="{Binding Email}"
+                                 materialDesign:HintAssist.Hint="Gmail"
+                                 materialDesign:HintAssist.FloatingOffset="0 -20"
+                                 BorderBrush="#c5c8ff"
+                                 Margin="75 15 75 15"
+                                 BorderThickness="0 0 0 1.5"
+                                 IsReadOnly="True"/>
+                        <TextBox Grid.Column="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 Text ="*******"
+                                 materialDesign:HintAssist.Hint="Mật khẩu"
+                                 materialDesign:HintAssist.FloatingOffset="0 -20"
+                                 BorderBrush="#c5c8ff"
+                                 Margin="75 15 75 15"
+                                 BorderThickness="0 0 0 1.5"
+                                IsEnabled="False"/>
+                    </Grid>
+                    <Button x:Name="btnChangePassword" Width="150" Background="#6A0DAD" Foreground="#FFFFFF" Grid.Row="2" Content="Đổi mật khẩu" Cursor="Hand" Style="{StaticResource MaterialDesignFlatLightBgButton}" Click="btnChangePassword_Click"/>
+                </Grid>
+            </Border>
+        </Grid>
+</Page>

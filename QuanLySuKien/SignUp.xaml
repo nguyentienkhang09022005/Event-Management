@@ -1,0 +1,121 @@
+﻿<Window x:Class="Demo1.SignUp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="SignUp" Height="720" Width="1080"
+        WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Background="Transparent" AllowsTransparency="True"
+        ResizeMode="NoResize" WindowState="Normal">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <!-- Bo góc cho toàn bộ cửa sổ -->
+    <Border CornerRadius="30" Opacity="1">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0, 0" EndPoint="1,1">
+                <GradientStop Color="#F6DEE6" Offset="0"/>
+                <GradientStop Color="#8EC5FC" Offset="0.5"/>
+                <GradientStop Color="#F6DEE6" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <!-- Column Definitions -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="1.5*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Right Panel (Thông tin đăng nhập) -->
+            <Border Grid.Column="1" CornerRadius="0,30,30,0" Background="Transparent" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <!-- Border nhỏ nằm bên trong Border chính -->
+                    <StackPanel Grid.Row="0" Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,10,0" Height="30" Orientation="Horizontal" FlowDirection="RightToLeft">
+                        <Button x:Name="btnClose" Style="{StaticResource IconButtonsStyle}" Content="{DynamicResource close}" Click="btnClose_Click" Tag="IsCloseButton"/>
+                        <Button x:Name="btnMinimize" Style="{DynamicResource IconButtonsStyle}" Content="{DynamicResource minimize}" Click="btnMinimize_Click"/>
+                    </StackPanel>
+                    <Border Grid.Row="1" Width="400" Height="500" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#F2F2F2 " CornerRadius="25" Opacity="0.8">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1.5*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel>
+                                <TextBlock Text="ĐĂNG NHẬP" Foreground="#6A0DAD" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center"  Margin="0,20,0,10"/>
+                                <TextBox x:Name="txtUsername" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="350" 
+                                    Margin="0,20,0,0"
+                                    FontSize="22"
+                                    materialDesign:HintAssist.Hint="Nhập tên đăng nhập..."/>
+                                <PasswordBox x:Name="txtPassword" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
+                                    Width="350" 
+                                    Margin="0,20,0,0"
+                                    FontSize="22"
+                                    materialDesign:HintAssist.Hint="Nhập mật khẩu..."/>
+                                <Button x:Name="txtForgotPassword" Foreground="Black"  Background="Transparent" Content="Quên mật khẩu?" FontSize="15"
+                                        HorizontalAlignment="Right" Opacity="0.6" Margin="0 10 5 0" BorderThickness="0,0,0,0.5" Click="txtForgotPassword_Click"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1">
+                                <Button x:Name="btnSignIn" HorizontalAlignment="Center"
+                                    Background="#6A0DAD"
+                                    Foreground="#FFFFFF"
+                                    FontSize="18"
+                                    Width="130" Height="45"
+                                    materialDesign:ButtonAssist.CornerRadius="22"
+                                    Content="Đăng nhập"
+                                    Cursor="Hand"
+                                    Click="btnSignIn_CLick">
+                                </Button>
+                                <TextBlock Text="Hoặc" Foreground="Black"  Background="Transparent" FontSize="21" 
+                                     HorizontalAlignment="Center" Opacity="0.8" Height="27" Margin="0 5 0 5" />
+                                <Button x:Name="btnSignUp"
+                                    Background="#6A0DAD"
+                                    Foreground="#FFFFFF"
+                                    FontSize="18"
+                                    Width="130" Height="45"
+                                    materialDesign:ButtonAssist.CornerRadius="22"
+                                    Content="Đăng Ký"
+                                    Cursor="Hand"
+                                    Click="btnSignUp_Click">
+                                </Button>
+                                <Button x:Name="txtGuest" Foreground="Black" Width="200"  Background="Transparent" Content="Bạn là khách?" FontSize="19"
+                            Opacity="0.6" FontWeight="Heavy" BorderThickness="0,0,0,0" Click="txtGuest_Click" Margin="0 10 0 0"/>
+                        </StackPanel>
+                            </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- Left Panel (Hình nền và Đăng nhập) -->
+            <Border CornerRadius="30,0,0,30" ClipToBounds="True" Background="Transparent">
+                <Grid>
+                    <Image Source="/Images/avtxanh.jpg" Width="300" Height="300" VerticalAlignment="Top"  Margin="0,20,0,0"/>
+                    <TextBlock Text="Đăng nhập" Foreground="#6A0DAD" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="35" FontWeight="Bold" Margin="0,0,0,150"/>
+                    <TextBlock Text="Hãy đăng nhập thông tin để tối ưu hóa trải nghiệm của bạn" Foreground="#6A0DAD" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                   TextAlignment="Center" TextWrapping="Wrap" LineHeight="28" FontSize="20" FontWeight="SemiBold" Margin="0 0,0,0" Width="300" Opacity="0.8"/>
+                    <Canvas>
+                        <Polygon Points="100,400 200,370 180,470" Fill="White"  Opacity="0.6" Canvas.Left="57" Canvas.Top="125" />
+                        <Ellipse Width="40" Height="40" Fill="White" Opacity="0.6" Canvas.Left="285" Canvas.Top="426"/>
+                        <Ellipse Width="20" Height="20" Fill="White" Opacity="0.6" Canvas.Left="110" Canvas.Top="552" />
+                        <Ellipse Width="20" Height="20" Fill="White" Opacity="0.6" Canvas.Left="206" Canvas.Top="628" />
+                        <Ellipse Width="30" Height="30" Fill="White" Opacity="0.7" Canvas.Left="57" Canvas.Top="475" />
+                        <Ellipse Width="50" Height="50" Fill="White" Opacity="0.6" Canvas.Left="340" Canvas.Top="545" />
+                        <Ellipse Width="55" Height="55" Fill="White" Opacity="0.6" Canvas.Left="70" Canvas.Top="620" />
+                        <Ellipse Width="35" Height="35" Fill="White" Opacity="0.6" Canvas.Left="355" Canvas.Top="645" />
+                        <Ellipse Width="20" Height="20" Fill="White" Opacity="0.6" Canvas.Left="157" Canvas.Top="446" />
+
+                    </Canvas>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,67 @@
+﻿<Page x:Class="Demo1.Pages.Guest.ErrorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Demo1.Pages.Guest"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1080"
+      Title="ErrorPage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Label Foreground="Navy" Content="ĐÃ CÓ LỖI XẢY RA" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" FontWeight="Bold"/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Border Background="#ffffff" Margin="80 0 80 30" CornerRadius="50">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.6*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                        </Grid.ColumnDefinitions>
+                        <!--Phần bên trái ghi nội dung và button để đăng nhập dăng ký-->
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+
+
+
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Bạn chưa đăng nhập" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize=" 38" FontWeight="ExtraBold" Foreground="red"
+                                       Margin="0 50 0 10"/>
+                            <TextBlock Grid.Row="1" Text="Đây là tính năng dành cho thành viên. Có vẻ như bạn chưa đăng nhập. Để khắc phục sự cố:"
+                                       FontSize="28" FontWeight="Bold" Width="350" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Button x:Name="btnDangNhap" Margin="50 70 50 0" Width="150" Content="Đăng Nhập" Grid.Row="2" Style="{StaticResource MaterialDesignOutlinedButton }" Cursor="Hand" Click="btnSignIn_Click"/>
+                            <TextBlock Text="Hoặc" Grid.Row="4" Margin="50 15 50 0" Foreground="Black"  Background="Transparent" FontSize="25" 
+                             HorizontalAlignment="Center" Opacity="0.8" Height="32" />
+                            <Button x:Name="btnDangKy" Margin="50 15 50 15" Width="150" Grid.Row="5"  Content="Đăng ký" Style="{StaticResource MaterialDesignOutlinedButton }" Cursor="Hand" Click="btnSignUp_Click"/>
+                        </Grid>
+
+                        <Grid Grid.Column="1">
+                            <Image Source="/Images/Cat404.jpg" Height="500" Width="400" Margin="0 0 30 0"/>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+</Page>

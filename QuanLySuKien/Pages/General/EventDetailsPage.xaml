@@ -1,0 +1,207 @@
+﻿<Page x:Class="Demo1.Pages.General.EventDetailsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Demo1.Pages.General"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EventDetailsPage">
+    <Grid Margin="10">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!-- Header Section -->
+            <Grid Grid.Row="0">
+                <Button x:Name="btnShowParticipants"
+                Content="Danh sách người tham gia"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Margin="0,15,15,15"
+                Width="200"
+                Height="40"
+                Background="#4C4A89"
+                Foreground="White"
+                FontWeight="Bold"
+                Visibility="Collapsed"
+                Click="btnShowParticipants_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" 
+                    CornerRadius="20">
+                                <ContentPresenter HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center" 
+                                  Content="{TemplateBinding Content}" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="1" Height="375" Margin="25,0,25,20">
+                <!-- Define 2 Columns -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <!-- Cột thông tin -->
+                    <ColumnDefinition Width="2*" />
+                    <!-- Cột đăng ký -->
+                </Grid.ColumnDefinitions>
+
+                <!-- Background Image -->
+                <Image Source="{Binding Image}" Stretch="Fill" Grid.ColumnSpan="2" />
+
+                <!-- Cột 1: Thông tin sự kiện -->
+                    <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Title}" 
+               FontSize="24" 
+               FontWeight="Bold" 
+               Foreground="#FFFFFF" 
+               Margin="10"
+               TextWrapping="Wrap">
+                            <TextBlock.Effect>
+                                <DropShadowEffect Color="Black" BlurRadius="5" ShadowDepth="2" />
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <TextBlock Text="{Binding Faculty}" 
+               FontSize="16" 
+               Foreground="#FFFFFF" 
+               Margin="10">
+                            <TextBlock.Effect>
+                                <DropShadowEffect Color="Black" BlurRadius="5" ShadowDepth="2" />
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <TextBlock FontSize="14" Foreground="#FFFFFF" Margin="10,10,10,0" TextWrapping="Wrap">
+                            <TextBlock.Effect>
+                                <DropShadowEffect Color="Black" BlurRadius="5" ShadowDepth="2" />
+                            </TextBlock.Effect>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="Tại {0} vào lúc {1} ngày {2}">
+                                    <Binding Path="Venue" />
+                                    <Binding Path="StartTime1" />
+                                    <Binding Path="StartDate1" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </StackPanel>
+
+                    <!-- Cột 2: Phần đăng ký -->
+                    <Border Grid.Column="1" Background="#B3FFFFFF" CornerRadius="15" Margin="30" VerticalAlignment="Center">
+                        <StackPanel>
+                            <TextBlock Text="Thời gian đăng ký" 
+                                       FontSize="18" 
+                                       FontWeight="Bold" 
+                                       Foreground="#4C4A89" 
+                                       Margin="0,0,0,10"
+                                       HorizontalAlignment="Center"/>
+                            <TextBlock FontSize="16" Foreground="Black" Margin="0,5,0,0">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="Bắt đầu: {0} ngày {1}">
+                                        <Binding Path="StartTime" />
+                                        <Binding Path="StartDate" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                            <TextBlock FontSize="16" Foreground="Black" Margin="0,5,0,10">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="Kết thúc: {0} ngày {1}">
+                                        <Binding Path="EndTime" />
+                                        <Binding Path="EndDate" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                            <Button Content="Đăng ký ngay"
+                                    Width="100"
+                                    Height="35"
+                                    Background="#4C4A89" 
+                                    Foreground="White" 
+                                    FontWeight="Bold" 
+                                    Margin="0,10,0,0"
+                                    Padding="10" 
+                                    BorderThickness="0" 
+                                    Cursor="Hand" Click="Button_Click">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}"
+                             CornerRadius="10"
+                             BorderBrush="{TemplateBinding BorderBrush}"
+                             BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*" />
+                    <!-- Cột dành cho Mô tả sự kiện -->
+                    <ColumnDefinition Width="2*" />
+                    <!-- Cột dành cho ba phần còn lại -->
+                </Grid.ColumnDefinitions>
+
+                <!-- Cột 1: Mô tả sự kiện -->
+                <StackPanel Grid.Column="0" Margin="10">
+                    <TextBlock Text="Mô tả sự kiện" FontSize="20" FontWeight="Bold" Margin="0,0,0,10" />
+                    <RichTextBox x:Name="EventContentRichTextBox" IsReadOnly="True" BorderThickness="0" 
+                        Background="Transparent" 
+                        VerticalScrollBarVisibility="Auto" 
+                        AcceptsReturn="True"
+                        Padding="0"
+                        FontSize="14"
+                        Foreground="Black" />
+                </StackPanel>
+
+                <!-- Cột 2: Các phần khác -->
+                <StackPanel Grid.Column="1" Margin="10">
+                    <!-- Chương trình diễn ra -->
+                    <StackPanel Margin="0,0,0,20">
+                        <TextBlock Text="Chương trình diễn ra" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" />
+                        <TextBlock FontSize="14" Foreground="Black" Margin="0,5,0,10">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="Vào lúc: {0} ngày {1}">
+                                    <Binding Path="StartTime1" />
+                                    <Binding Path="StartDate1" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                        <TextBlock FontSize="14" Foreground="Black" Margin="0,5,0,10">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="Kết thúc: {0} ngày {1}">
+                                    <Binding Path="EndTime1" />
+                                    <Binding Path="EndDate1" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </StackPanel>
+
+                    <!-- Phần thưởng -->
+                    <StackPanel Margin="0,0,0,20">
+                        <TextBlock Text="Phần thưởng" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" />
+                        <TextBlock Text="{Binding Reward}"
+                                   TextWrapping="Wrap"/>
+                    </StackPanel>
+
+                    <!-- Nhà tài trợ -->
+                    <StackPanel>
+                        <TextBlock Text="Nhà tài trợ" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" />
+                            <TextBlock Text="{Binding Sponsor}" Margin="0,0,0,20"
+                                       TextWrapping="Wrap"/>
+                        <TextBlock x:Name="Sponsor" Text="Nhà tài trợ" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" />
+                        <TextBlock Text="{Binding Sponsor}" Margin="0,0,0,20" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="3">
+                <StackPanel x:Name="MainContentControl"/>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+    </Grid>
+</Page>

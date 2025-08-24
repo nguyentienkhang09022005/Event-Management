@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="Demo1.Pages.User.SignupEventsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Demo1.Pages.User"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="500">
+    <StackPanel>
+        <ItemsControl ItemsSource="{Binding}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="Transparent" CornerRadius="8" Margin="10" BorderThickness="1" BorderBrush="Gray">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <!-- Cột đầu tiên chứa hình ảnh, rộng 1 phần -->
+                                <ColumnDefinition Width="0.7*" />
+                                <!-- Cột thứ hai chứa tiêu đề, rộng 3 phần -->
+                                <ColumnDefinition Width="3*" />
+                                <!-- Cột thứ ba đủ rộng cho button -->
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Hình ảnh đặt trong cột đầu tiên -->
+                            <Image Source="{Binding ImagePath}" Grid.Column="0" Width="150" Height="110" Stretch="Fill" Margin="5" />
+
+                            <!-- Tiêu đề đặt trong cột thứ hai -->
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="5,0">
+                                <!-- Title -->
+                                <TextBlock Text="{Binding Title}" FontWeight="Bold" Margin="0,0,0,5" FontSize="20" />
+
+                                <!-- Start Time and Date -->
+                                <TextBlock FontSize="15" FontWeight="SemiBold" Foreground="Black" Margin="0,5,0,0">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="Bắt đầu: {0} ngày {1}">
+                                            <Binding Path="StartTime" />
+                                            <Binding Path="StartDate" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+
+                                <!-- Faculty -->
+                                <TextBlock Text="{Binding Faculty}" FontWeight="SemiBold" Margin="0,0,0,2" FontSize="15" />
+
+                                <!-- Venue -->
+                                <TextBlock Text="{Binding Venue}" FontWeight="SemiBold" FontSize="15" />
+                            </StackPanel>
+                            <!-- Các button đặt trong cột thứ ba -->
+                            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5">
+                                <Button x:Name="btnInf" Style="{DynamicResource InfoButtonStyle}" Content="{DynamicResource infoIcon}" Margin="0,0,5,0" Click="btnInf_Click"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
+</UserControl>

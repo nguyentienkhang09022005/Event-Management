@@ -1,0 +1,43 @@
+﻿<Page x:Class="Demo1.Pages.Admin.PostersListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Demo1.Pages.Admin"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PostersListPage">
+
+    <DataGrid x:Name="CurrentDataGrid"
+  AutoGenerateColumns="False" 
+  Style="{DynamicResource DataGridStyle1}"
+  CellStyle="{DynamicResource DataGridCellStyle1}"
+  ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+  RowStyle="{DynamicResource DataGridRowStyle1}"
+  Grid.Row="2">
+        <DataGrid.Columns>
+            <DataGridTemplateColumn Header="HỌ VÀ TÊN"  IsReadOnly="True" Width="1.2*">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" Foreground="{StaticResource TextPrimaryColor}" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTextColumn Header="SỐ ĐIỆN THOẠI" Foreground="{StaticResource TextPrimaryColor}" FontWeight="SemiBold" IsReadOnly="True" Width="*" Binding="{Binding PhoneNumber}"/>
+            <DataGridTextColumn Header="EMAIL" Foreground="{StaticResource TextPrimaryColor}" FontWeight="SemiBold" IsReadOnly="True" Width="*" Binding="{Binding Email}"/>
+            <DataGridTextColumn Header="KHOA" Foreground="{StaticResource TextPrimaryColor}" FontWeight="SemiBold" IsReadOnly="True" Width="1.2*" Binding="{Binding Khoa}"/>
+            <DataGridTemplateColumn Header="CHỈNH SỬA" IsReadOnly="True" Width="*">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Style="{DynamicResource InfoButtonStyle}" Content="{DynamicResource infoIcon}" Margin="0,0,2,0" Click="btninfo_Click" />
+                            <Button Style="{DynamicResource InfoButtonStyle}" Content="{DynamicResource deleteIcon}" Click="btndelete_Click"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+        </DataGrid.Columns>
+    </DataGrid>
+</Page>

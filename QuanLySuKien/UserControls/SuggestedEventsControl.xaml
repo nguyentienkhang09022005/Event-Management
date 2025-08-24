@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="Demo1.Pages.General.SuggestedEventsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Demo1.Pages.General"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel Margin="15">
+        <Frame x:Name="PagesNavigation" NavigationUIVisibility="Hidden" />
+        <!-- Tiêu đề mới -->
+        <TextBlock Text="BẠN CÓ THỂ THÍCH:" Foreground="{StaticResource TitlePrimaryColor}" FontSize="20" FontWeight="Bold" Margin="10"/>
+
+        <ItemsControl ItemsSource="{Binding SuggestedEvents}">
+            <ItemsControl.ItemsPanel>
+                <!-- Sử dụng WrapPanel để xếp các mục -->
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Left" Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <!-- Phần hiển thị từng mục -->
+                    <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="12" Margin="5" Width="180" Height="220">
+                        <StackPanel>
+                            <!-- Ảnh -->
+                            <Image Source="{Binding ImagePath}" Width="180" Height="120" Stretch="Fill">
+                                <Image.Clip>
+                                    <RectangleGeometry Rect="0,0,180,120" RadiusX="12" RadiusY="12"/>
+                                </Image.Clip>
+                            </Image>
+                            <!-- Tiêu đề sự kiện -->
+                            <TextBlock Text="{Binding Title}" FontSize="16" FontWeight="Bold" TextAlignment="Center" Margin="0,10,0,0"/>
+                            <!-- Ngày tổ chức -->
+                            <TextBlock Text="{Binding Date}" TextAlignment="Center" Foreground="Gray"/>
+                            <!-- Người tổ chức -->
+                            <TextBlock Text="{Binding Organizer}" TextAlignment="Center" Foreground="Gray"/>
+                            <!-- Liên kết chi tiết -->
+                            <TextBlock Text="XEM CHI TIẾT..." Foreground="Blue" TextAlignment="Center" Margin="0,5,0,0" Cursor="Hand" MouseLeftButtonDown="EventDetails_Click"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
+</UserControl>

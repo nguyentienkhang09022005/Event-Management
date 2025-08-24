@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Pages\Admin\AddUser.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Admin\CheckUser.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Admin\MemberListPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Admin\PostersListPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Admin\StudentListPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Dean\CheckEvent.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Dean\InfoUser.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Dean\ParticipantList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\General\ChangePassword.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\General\PersonalProfilePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\SignUp\SignUpPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SignUp.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\CreatedEventsControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\FeaturedEventsControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\HistoryCreateControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\SearchedEventsControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\SignupEventsControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\RegisteredEventsControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\SuggestedEventsControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\UsersControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Assets\Icons\Icons.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Admin\AddUser.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Admin\CheckUser.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Admin\MemberListPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Admin\PostersListPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Admin\StudentListPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Dean\CheckEvent.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Dean\InfoUser.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Dean\ParticipantList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\General\PersonalProfilePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\SignUp\SignUpPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SignUp.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\SignUpStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\TextBoxStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\CreatedEventsControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\FeaturedEventsControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\HistoryCreateControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\SearchedEventsControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\SignupEventsControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\RegisteredEventsControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\MainStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Theme\ColorTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\SuggestedEventsControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\UsersControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

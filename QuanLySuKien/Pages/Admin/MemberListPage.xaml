@@ -1,0 +1,94 @@
+﻿<Page x:Class="Demo1.Pages.Admin.MemberListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:Demo1.Pages.Admin"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MemberListPage">
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Row 0: Navigation buttons for Sinh viên and Người Đăng Bài -->
+        <Separator Height="1" Grid.Row="1" Background="#dae2ea" Margin="0 -2 0 10"/>
+        <Grid Grid.Row="0">
+            <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
+                <RadioButton Content="SINH VIÊN" IsChecked="True" Margin="0,0,20,0" Style="{StaticResource tabButton}" Click="Student_Click"/>
+                <RadioButton Content="NGƯỜI ĐĂNG BÀI" Style="{StaticResource tabButton}" Click="Posters_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="0" HorizontalAlignment="Right">
+            <Button HorizontalAlignment="Center"
+            Background="#6A0DAD"
+            Foreground="#FFFFFF"
+            FontSize="16"
+            FontWeight="SemiBold"
+            Margin="0 0 25 0"
+            Width="90" Height="35"
+            Content="Thêm"
+            Cursor="Hand"
+            Click="AddButton_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                        CornerRadius="20"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+
+        <!-- Row 3: Header displaying "SỐ LƯỢNG" -->
+
+        <Grid HorizontalAlignment="Left" Grid.Row="2" Margin="0 5 0 0">
+            <!-- Số Lượng-->
+            <TextBlock Text="{Binding RowCount, StringFormat='Số Lượng: {0}'}" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,20,0"/>
+        </Grid>
+        <Grid Grid.Row="2" HorizontalAlignment="Right" Margin="0 0 15 0">
+            <!-- Chia Grid thành 2 cột -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <!-- TextBlock -->
+                <ColumnDefinition Width="*" />
+                <!-- Filter Box -->
+            </Grid.ColumnDefinitions>
+
+            <!-- TextBlock "Filter by" -->
+            <TextBlock Text="Filter by" VerticalAlignment="Center" FontSize="13" FontWeight="SemiBold" Foreground="#121518" Margin="0,0,10,0" Grid.Column="0"/>
+            <!-- Filter TextBox -->
+            <Grid Grid.Column="1" Width="200">
+                <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False" Panel.ZIndex="1" Text="Search in Members ..." 
+                   Visibility="{Binding ElementName=txtFilter, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
+                <TextBox x:Name="txtFilter" 
+                 Style="{StaticResource textboxFilter}" TextChanged="txtFilter_TextChanged" />
+                <Path Data="{StaticResource searchIcon}" 
+              Fill="Black" 
+              Width="15" 
+              Height="15" 
+              Stretch="Uniform" 
+              HorizontalAlignment="Right" 
+              VerticalAlignment="Center" 
+              Margin="0 0 15 0" />
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Frame x:Name="PagesNavigation" NavigationUIVisibility="Hidden"/>
+        </Grid>
+    </Grid>
+</Page>
